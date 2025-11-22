@@ -120,7 +120,21 @@ jobs:
           fi
 
           chmod +x "$TARGET_FILE"
+          
+          # Clean up: Remove the tarball and any unwanted extracted files
+          # We only want the binary in src/Sources/Resources/cli-proxy-api
+          echo "Cleaning up unwanted extracted files..."
           rm -f "$FILENAME"
+          
+          # Remove known unwanted files from the CLIProxyAPI tarball
+          rm -f config.example.yaml config.yaml
+          rm -f README_CN.md LICENSE
+          
+          # List any remaining files that might have been extracted (for debugging)
+          if [ -n "$(git status --porcelain | grep -v 'src/Sources/Resources/cli-proxy-api')" ]; then
+            echo "Warning: Found unexpected files in working directory:"
+            git status --porcelain
+          fi
           
           echo "Verifying binary (basic checks)..."
           # Can't execute macOS ARM64 binary on Linux runner, so just verify:
