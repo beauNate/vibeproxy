@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Resolves "Could not start backend server on port 8318" errors
 - **Token Expiry Handling** - Improved OAuth token expiry detection
   - System now correctly falls back to Amp API when local tokens expire
+- **UI Duplicate** - Removed duplicate Antigravity entry in Settings view
 
 ### Changed
 - **README Updates** - Added reference to new Amp CLI setup guide alongside Factory guide
