@@ -100,9 +100,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Access to Gemini 3 Pro models via Antigravity backend
   
 - **Gemini 3 Pro Models** - Support for Google's latest Gemini 3 models through Antigravity
-  - `gemini-3-pro-high` - Maximum capability variant
-  - `gemini-3-pro-low` - Standard variant (recommended)
-  - `gemini-3-pro-image` - Enhanced vision capabilities
+  - `gemini-3-pro-preview` - Latest preview model (recommended)
+  - `gemini-3-pro-image-preview` - Enhanced vision capabilities
   - All models use OpenAI API format with Antigravity authentication
 
 ### Improved

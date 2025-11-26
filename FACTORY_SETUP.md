@@ -212,22 +212,15 @@ Edit your Factory configuration file at `~/.factory/config.json` (if the file do
       "provider": "openai"
     },    
     {
-      "model_display_name": "Gemini 3 Pro (High)",
-      "model": "gemini-3-pro-high",
-      "base_url": "http://localhost:8317/v1",
-      "api_key": "dummy-not-used",
-      "provider": "openai"
-    },
-    {
       "model_display_name": "Gemini 3 Pro",
-      "model": "gemini-3-pro-low",
+      "model": "gemini-3-pro-preview",
       "base_url": "http://localhost:8317/v1",
       "api_key": "dummy-not-used",
       "provider": "openai"
     },
     {
       "model_display_name": "Gemini 3 Pro (Image)",
-      "model": "gemini-3-pro-image",
+      "model": "gemini-3-pro-image-preview",
       "base_url": "http://localhost:8317/v1",
       "api_key": "dummy-not-used",
       "provider": "openai"
@@ -287,7 +280,7 @@ Edit your Factory configuration file at `~/.factory/config.json` (if the file do
    - `claude-opus-4-5` (Claude Opus 4.5 - Most powerful)
    - `claude-sonnet-4-5` (Claude 4.5 Sonnet)
    - `gpt-5.1`, `gpt-5.1-codex`, etc.
-   - `gemini-3-pro-high`, `gemini-3-pro-low`, `gemini-2.5-pro`, etc.
+   - `gemini-3-pro-preview`, `gemini-3-pro-image-preview`, `gemini-2.5-pro`, etc.
 
 3. **Start coding!** Factory will now route all requests through VibeProxy, which handles authentication automatically.
 
@@ -306,9 +299,8 @@ Edit your Factory configuration file at `~/.factory/config.json` (if the file do
 ### Gemini Models
 
 **Gemini 3 Pro** (via Antigravity - requires Antigravity authentication):
-- `gemini-3-pro-high` - Gemini 3 Pro High (Maximum capability)
-- `gemini-3-pro-low` - Gemini 3 Pro (Standard - recommended)
-- `gemini-3-pro-image` - Gemini 3 Pro with enhanced vision capabilities
+- `gemini-3-pro-preview` - Gemini 3 Pro (Latest preview model)
+- `gemini-3-pro-image-preview` - Gemini 3 Pro with enhanced vision capabilities
 
 **Gemini 2.x** (via Gemini CLI - requires Gemini authentication):
 - `gemini-2.5-pro` - Gemini 2.5 Pro (Most capable production model)
