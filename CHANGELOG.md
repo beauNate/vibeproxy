@@ -5,6 +5,12 @@ All notable changes to VibeProxy will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2025-11-27
+
+### Updated
+- **CLIProxyAPI 6.5.26** - Latest upstream release (#56)
+  - Various upstream improvements and stability enhancements
+
 ## [1.4.0] - 2025-11-26
 
 ### Added
@@ -318,6 +324,7 @@ All future changes will be documented here before release.
 
 ---
 
+[1.4.1]: https://github.com/automazeio/vibeproxy/releases/tag/v1.4.1
 [1.4.0]: https://github.com/automazeio/vibeproxy/releases/tag/v1.4.0
 [1.3.0]: https://github.com/automazeio/vibeproxy/releases/tag/v1.3.0
 [1.2.0]: https://github.com/automazeio/vibeproxy/releases/tag/v1.2.0
