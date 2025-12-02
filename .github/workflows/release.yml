@@ -142,10 +142,16 @@ jobs:
         env:
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
         run: |
-          # Get the Sparkle sign_update tool
-          cd src && swift build -c release 2>/dev/null
-          SIGN_UPDATE=".build/artifacts/sparkle/Sparkle/bin/sign_update"
-          cd ..
+          # Find the Sparkle sign_update tool
+          SIGN_UPDATE=$(find src/.build -name "sign_update" -type f | grep -v old_dsa | head -1)
+          
+          if [ -z "$SIGN_UPDATE" ]; then
+            echo "Error: sign_update not found"
+            find src/.build -name "sign_update" -type f
+            exit 1
+          fi
+          
+          echo "Using sign_update: $SIGN_UPDATE"
           
           # Sign the ZIP file
           SIGNATURE=$(echo "$SPARKLE_PRIVATE_KEY" | "$SIGN_UPDATE" VibeProxy.zip --ed-key-file -)
