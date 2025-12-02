@@ -166,29 +166,24 @@ jobs:
         run: |
           TODAY=$(date -u +"%a, %d %b %Y %H:%M:%S +0000")
           
-          # Create new item entry
-          NEW_ITEM="    <item>
-      <title>Version ${VERSION}</title>
-      <sparkle:version>${VERSION}</sparkle:version>
-      <sparkle:shortVersionString>${VERSION}</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <pubDate>${TODAY}</pubDate>
-      <enclosure url=\"https://github.com/automazeio/vibeproxy/releases/download/v${VERSION}/VibeProxy.zip\"
-                 type=\"application/octet-stream\"
-                 sparkle:edSignature=\"${ED_SIGNATURE}\"
-                 length=\"${LENGTH}\"/>
-    </item>"
+          # Create new item entry in a temp file
+          cat > /tmp/new_item.xml << ENDOFITEM
+              <item>
+                <title>Version ${VERSION}</title>
+                <sparkle:version>${VERSION}</sparkle:version>
+                <sparkle:shortVersionString>${VERSION}</sparkle:shortVersionString>
+                <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+                <pubDate>${TODAY}</pubDate>
+                <enclosure url="https://github.com/automazeio/vibeproxy/releases/download/v${VERSION}/VibeProxy.zip"
+                           type="application/octet-stream"
+                           sparkle:edSignature="${ED_SIGNATURE}"
+                           length="${LENGTH}"/>
+              </item>
+          ENDOFITEM
           
-          # Insert new item at the top of the channel (after <language> line)
-          awk -v new_item="$NEW_ITEM" '
-            /<language>en<\/language>/ {
-              print
-              print new_item
-              next
-            }
-            { print }
-          ' appcast.xml > appcast.xml.tmp
-          mv appcast.xml.tmp appcast.xml
+          # Insert new item after <language> line
+          sed -i.bak '/<language>en<\/language>/r /tmp/new_item.xml' appcast.xml
+          rm -f appcast.xml.bak /tmp/new_item.xml
           
           echo "Updated appcast.xml with version ${VERSION}"
           head -30 appcast.xml
